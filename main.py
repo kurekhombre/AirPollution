@@ -1,23 +1,32 @@
+import logging
+from src.data_ingestion import fetch_city_coordinates, fetch_air_pollution_data, upload_to_gcs, add_metadata_to_data, generate_filename
 import os
-import json
-import requests
-
 from dotenv import load_dotenv
 
+# Configure logging
+logging.basicConfig(filename='logs/app.log', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
+
 load_dotenv('secrets/.env')
-openweather_key_api = os.environ['OPENWEATHER_API_KEY']
+ACCOUNT_SERVICE_KEY = os.environ['ACCOUNT_SERVICE_KEY']
 
-# city_name = input("City name:")
-city_api = f"http://api.openweathermap.org/geo/1.0/direct?q=Marki&limit=1&appid={openweather_key_api}"
+def main():
+    try:
+        city_name = input("Input city name: ")
+        openweather_key_api = os.environ['OPENWEATHER_API_KEY']
 
-r = requests.get(city_api)
-x = json.loads(r.text)
-print(x)
-lat=x[0]['lat']
-lon=x[0]['lon']
-print(lat,lon)
+        lat, lon = fetch_city_coordinates(city_name, openweather_key_api)
+        pollution_data = fetch_air_pollution_data(lat, lon, openweather_key_api)
 
-pollution_api = f'http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={openweather_key_api}'
-r = requests.get(pollution_api)
-x = json.loads(r.text)
-print(x)
+        pollution_data_with_metadata = add_metadata_to_data(pollution_data, city_name)
+
+        file_name = generate_filename(city_name)
+
+        # Upload data directly from the variable
+        upload_to_gcs(ACCOUNT_SERVICE_KEY, 'airpollution_bucket', file_name, pollution_data_with_metadata)
+        
+        logging.info("Data ingestion and upload process completed successfully.")
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+
+if __name__ == "__main__":
+    main()

@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 
 google_cloud_service_key
+app.log
+co_zrobic_z_danymi
