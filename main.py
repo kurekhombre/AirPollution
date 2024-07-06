@@ -3,7 +3,6 @@ from src.data_ingestion import fetch_city_coordinates, fetch_air_pollution_data,
 import os
 from dotenv import load_dotenv
 
-# Configure logging
 logging.basicConfig(filename='logs/app.log', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
 
 load_dotenv('secrets/.env')
@@ -21,7 +20,6 @@ def main():
 
         file_name = generate_filename(city_name)
 
-        # Upload data directly from the variable
         upload_to_gcs(ACCOUNT_SERVICE_KEY, 'airpollution_bucket', file_name, pollution_data_with_metadata)
         
         logging.info("Data ingestion and upload process completed successfully.")
