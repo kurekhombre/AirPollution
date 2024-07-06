@@ -32,6 +32,10 @@
 import functions_framework
 
 #główna baza
+
+
 @functions_framework.http
-def open_weather_data_extract():
-    return "Hello world"
+def open_weather_data_extract(request, context=None):
+# tu main
+#bardziej zgeneralizować (autentykacja api, etc.)
+    return "Hello world" #return json (str)
