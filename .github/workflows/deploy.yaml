@@ -32,10 +32,10 @@ jobs:
       run: gcloud config set project able-store-371110
 
     - name: Deploy to Google Cloud Functions
-        run: |
-          gcloud functions deploy airpollution-function \
-          --runtime python311 \
-          --trigger-http \
-          --entry-point open_weather_data_extract \
-          --region europe-central2 \
-          --source ./
+      run: |
+        gcloud functions deploy airpollution-function \
+        --runtime python311 \
+        --trigger-http \
+        --entry-point open_weather_data_extract \
+        --region europe-central2 \
+        --source .
