@@ -37,3 +37,25 @@ def generate_filename(city):
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     filename = f"{city}_{timestamp}.json"
     return filename
+
+#Historia z API
+#____###
+
+# def get_air_pollution_history_data(
+#             self,
+#             lat: float,
+#             lon: float,
+#             unix_start_date: int,
+#             unix_end_date: int,
+#     ) -> dict:
+#         """
+        
+#         Get historical air pollution data for given coordinates.
+        
+#         """
+#         url = f"{self.AIR_POLLUTION_HISTORY_URL}lat={lat}&lon={lon}&start={unix_start_date}&end={unix_end_date}&appid={self.openweather_api_key}"
+#         return self.get_data_from_url(url)
+
+
+# AIR_POLLUTION_HISTORY_URL = 'http://api.openweathermap.org/data/2.5/air_pollution/history?'
+# """
