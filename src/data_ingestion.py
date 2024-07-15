@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 import logging
 
-load_dotenv('secrets/.env')
+# load_dotenv('secrets/.env')
 
 OPENWEATHER_API_KEY="90da9cd29152fb94e06a1ec2f90d7557"
 ACCOUNT_SERVICE_KEY={
