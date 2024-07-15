@@ -11,7 +11,7 @@ import functions_framework
 logging.basicConfig(filename='logs/app.log', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
 
 load_dotenv('secrets/.env')
-ACCOUNT_SERVICE_KEY = os.environ['GOOGLECLOUDSERVICEKEY']
+ACCOUNT_SERVICE_KEY = os.environ['ACCOUNT_SERVICE_KEY']
 GCS_BUCKET_NAME = os.environ['GCS_BUCKET_NAME']
 OPENWEATHER_API_KEY = os.environ['OPENWEATHER_API_KEY']
 
