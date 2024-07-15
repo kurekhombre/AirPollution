@@ -41,7 +41,7 @@ def process_data_extraction(city_name, config):
 
     upload_to_gcs(ACCOUNT_SERVICE_KEY, GCS_BUCKET_NAME, file_name, pollution_data_with_metadata)
     
-    logging.info("Data ingestion and upload process completed successfully.")
+    # logging.info("Data ingestion and upload process completed successfully.")
     
     response_data = {
         "city_name": city_name,
@@ -75,9 +75,9 @@ def open_weather_data_extract(request, context=None):
 
         file_name = generate_filename(city_name)
 
-        upload_to_gcs(ACCOUNT_SERVICE_KEY, GCS_BUCKET_NAME, file_name, pollution_data_with_metadata)
+        # upload_to_gcs(ACCOUNT_SERVICE_KEY, GCS_BUCKET_NAME, file_name, pollution_data_with_metadata)
         
-        logging.info("Data ingestion and upload process completed successfully.")
+        # logging.info("Data ingestion and upload process completed successfully.")
         
         response_data = {
             "city_name": city_name,
@@ -93,7 +93,7 @@ def open_weather_data_extract(request, context=None):
         return jsonify(response_data), 200
 
     except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        # logging.error(f"An error occurred: {e}")
         return jsonify({"error": f"An error occurred: {e}"}), 500
 
 # # import logging
