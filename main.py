@@ -16,9 +16,9 @@ GCS_BUCKET_NAME = os.environ['GCS_BUCKET_NAME']
 OPENWEATHER_API_KEY = os.environ['OPENWEATHER_API_KEY']
 
 def process_data_extraction(city_name, config):
-    OPENWEATHER_API_KEY = config['openweather']['api_key']
-    GCS_BUCKET_NAME = config['gcs']['bucket_name']
-    ACCOUNT_SERVICE_KEY = config['gcs']['account_service_key']
+    # OPENWEATHER_API_KEY = config['openweather']['api_key']
+    # GCS_BUCKET_NAME = config['gcs']['bucket_name']
+    # ACCOUNT_SERVICE_KEY = config['gcs']['account_service_key']
     
     lat, lon = fetch_city_coordinates(city_name, OPENWEATHER_API_KEY)
     pollution_data = fetch_air_pollution_data(lat, lon, OPENWEATHER_API_KEY)
@@ -44,8 +44,8 @@ def process_data_extraction(city_name, config):
 
     return response_data
 
-with open('config.yaml', 'r') as config_file:
-    config = yaml.safe_load(config_file)
+# with open('config.yaml', 'r') as config_file:
+#     config = yaml.safe_load(config_file)
 
 @functions_framework.http
 def open_weather_data_extract(request, context=None):
