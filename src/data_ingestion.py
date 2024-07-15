@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 import logging
 
-ACCOUNT_SERVICE_KEY = os.environ['ACCOUNT_SERVICE_KEY']
+ACCOUNT_SERVICE_KEY = os.environ['GOOGLECLOUDSERVICEKEY']
 GCS_BUCKET_NAME = os.environ['GCS_BUCKET_NAME']
 OPENWEATHER_API_KEY = os.environ['OPENWEATHER_API_KEY']
 
