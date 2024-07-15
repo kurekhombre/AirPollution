@@ -9,8 +9,8 @@ import functions_framework
 from google.cloud import logging as cloud_logging
 
 # Initialize Google Cloud Logging
-client = cloud_logging.Client()
-client.setup_logging()
+# client = cloud_logging.Client()
+# client.setup_logging()
 
 # Remove the file-based logging configuration
 # logging.basicConfig(filename='logs/app.log', level=logging.INFO, format='%(asctime)s:%(levelname)s:%(message)s')
