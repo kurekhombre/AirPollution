@@ -38,5 +38,5 @@ jobs:
         --trigger-http \
         --entry-point open_weather_data_extract \
         --region europe-central2 \
-        --source . \
+        --source ./gcloud_functions \
         --set-env-vars OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}
