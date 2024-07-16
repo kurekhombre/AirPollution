@@ -1,5 +1,5 @@
 import logging
-from gcloud_functions.utils.data_ingestion import fetch_city_coordinates, fetch_air_pollution_data, upload_to_gcs, add_metadata_to_data, generate_filename
+from utils.data_ingestion import fetch_city_coordinates, fetch_air_pollution_data, upload_to_gcs, add_metadata_to_data, generate_filename
 import os
 from dotenv import load_dotenv
 import yaml
