@@ -39,3 +39,4 @@ jobs:
         --entry-point open_weather_data_extract \
         --region europe-central2 \
         --source .
+        --set-env-vars OPENWEATHER_API_KEY='${{ secrets.OPENWEATHER_API_KEY }}',ACCOUNT_SERVICE_KEY='${{ secrets.ACCOUNT_SERVICE_KEY }}',GCS_BUCKET_NAME='${{ secrets.GCS_BUCKET_NAME }}'
