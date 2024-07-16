@@ -1,0 +1,22 @@
+cities:
+  - name: Warsaw
+    country: PL
+  - name: Krakow
+    country: PL
+  - name: Wroclaw
+    country: PL
+  - name: Gdansk
+    country: PL
+  - name: Poznan
+    country: PL
+
+date_range:
+  start_date: '2023-01-01'  
+  end_date: '2023-12-31'    
+
+output:
+  metadata: true 
+  file_format: json
+
+logging:
+  level: INFO
