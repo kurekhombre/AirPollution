@@ -1,9 +1,6 @@
-import logging
 from utils.data_ingestion import fetch_city_coordinates, fetch_air_pollution_data, upload_to_gcs, add_metadata_to_data, generate_filename
 import os
-from dotenv import load_dotenv
 import yaml
-from flask import jsonify, request
 from google.cloud import storage
 import functions_framework
 
@@ -29,8 +26,7 @@ def open_weather_data_extract(request, context=None):
             file_name = generate_filename(city_name)
 
         #     upload_to_gcs(ACCOUNT_SERVICE_KEY, GCS_BUCKET_NAME, file_name, pollution_data_with_metadata)
-            
-            # logging.info("Data ingestion and upload process completed successfully.")
+
             response_data = {
                 "city_name": city_name,
                 "coordinates": {
@@ -47,6 +43,5 @@ def open_weather_data_extract(request, context=None):
         return str(response)
 
     except Exception as e:
-        # logging.error(f"An error occurred: {e}")
         return {e}
 

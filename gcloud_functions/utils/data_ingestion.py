@@ -1,8 +1,6 @@
-import os
 import json
 import requests
 from google.cloud import storage
-from dotenv import load_dotenv
 from datetime import datetime
 import logging
 
@@ -23,7 +21,6 @@ def upload_to_gcs(path_to_key, bucket_name, file_name, data):
     bucket = client.bucket(bucket_name)
     blob = bucket.blob(file_name)
     blob.upload_from_string(json.dumps(data))
-    logging.info(f"File {file_name} uploaded to {bucket_name}.")
 
 def add_metadata_to_data(data, city):
     data['city'] = city
