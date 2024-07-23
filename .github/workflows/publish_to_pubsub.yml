@@ -1,0 +1,28 @@
+name: Publish to Pub/Sub
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        version: 'latest'
+        project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+        service_account_key: ${{ secrets.GOOGLECLOUDSERVICEKEY }}
+
+    - name: Authenticate with service account
+      run: |
+        echo '${{ secrets.GOOGLECLOUDSERVICEKEY }}' | jq '.' > $HOME/gcloud-key.json
+        gcloud auth activate-service-account --key-file=$HOME/gcloud-key.json
+
+    - name: Publish to Pub/Sub
+      run: |
+        gcloud pubsub topics publish airpollution_topic --message="Hello Pub/Sub"
