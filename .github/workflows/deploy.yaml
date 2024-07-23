@@ -1,3 +1,7 @@
+permissions:
+  contents: read
+  actions: write
+
 name: Deploy to Google Cloud Functions
 
 on:
@@ -37,14 +41,3 @@ jobs:
         --region europe-central2 \
         --source ./gcloud_functions \
         --set-env-vars OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}
-
-    - name: Trigger Publish to Pub/Sub Workflow
-      uses: actions/github-script@v5
-      with:
-        script: |
-          github.rest.actions.createWorkflowDispatch({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            workflow_id: 'publish_to_pubsub.yml',
-            ref: 'main'
-          })

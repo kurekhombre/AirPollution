@@ -1,7 +1,10 @@
 name: Publish to Pub/Sub
 
 on:
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Deploy to Google Cloud Functions"]
+    types:
+      - completed
 
 jobs:
   publish:
