@@ -7,8 +7,7 @@ cities:
     country: PL
   - name: Gdansk
     country: PL
-  - name: Poznan
-    country: PL
+
 
 date_range:
   start_date: '2023-01-01'  

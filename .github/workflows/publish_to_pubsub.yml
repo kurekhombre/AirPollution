@@ -28,4 +28,4 @@ jobs:
 
     - name: Publish to Pub/Sub
       run: |
-        gcloud pubsub topics publish airpollution_topic --message="Hello Pub/Sub"
+        gcloud pubsub topics publish airpollution_topic --message="Message Pub/Sub"
