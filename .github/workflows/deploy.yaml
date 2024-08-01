@@ -31,6 +31,7 @@ jobs:
     - name: Deploy to Google Cloud Functions
       run: |
         gcloud functions deploy airpollution-function \
+        --gen2 \
         --runtime python311 \
         --trigger-http \
         --entry-point open_weather_data_extract \
@@ -40,6 +41,6 @@ jobs:
 
     - name: Deploy Google Cloud Workflow
       run: |
-        gcloud workflows deploy worflow-1 \
+        gcloud workflows deploy workflow-1 \
         --source ./gcloud_workflows/workflow.yaml \
         --location europe-central2
