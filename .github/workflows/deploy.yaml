@@ -37,6 +37,7 @@ jobs:
         --region europe-central2 \
         --source ./gcloud_functions \
         --set-env-vars OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}
+        --service-account airpollution@able-store-371110.iam.gserviceaccount.com	
 
     - name: Create topic in Pub/Sub
       run: |
