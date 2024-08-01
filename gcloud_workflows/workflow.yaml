@@ -1,0 +1,20 @@
+main:
+  params: [input]
+  steps:
+    - call_function:
+        call: http.get
+        args:
+          url: https://europe-central2-able-store-371110.cloudfunctions.net/airpollution-function
+          auth:
+            type: OIDC
+        result: function_response
+    - publish_to_pubsub:
+        call: googleapis.pubsub.v1.projects.topics.publish
+        args:
+          topic: projects/able-store-371110/topics/airpollution_topic
+          body:
+            messages:
+              - data: ${base64.encode(text.encode(function_response.body))}
+        result: pubsub_response
+    - return_results:
+        return: ${pubsub_response}
