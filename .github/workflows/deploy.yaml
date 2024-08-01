@@ -30,7 +30,9 @@ jobs:
 
     - name: Deploy to Google Cloud Functions
       run: |
-        gcloud functions deploy airpollution-function \
+        gcloud functions add-iam-policy-binding airpollution-function \
+        --member allUsers \
+        --role roles/cloudfunctions.invoker \
         --runtime python311 \
         --trigger-http \
         --entry-point open_weather_data_extract \
@@ -44,4 +46,4 @@ jobs:
 
     - name: Deploy Google Cloud Workflow
       run: |
-        gcloud workflows deploy my-workflow-name --source=./gcloud_workflows/workflow.yaml --location=europe-central2
+        gcloud workflows deploy my-workflow-name --source ./gcloud_workflows/workflow.yaml --location europe-central2
