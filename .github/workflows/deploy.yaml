@@ -30,7 +30,7 @@ jobs:
 
     - name: Deploy to Google Cloud Functions
       run: |
-        gcloud functions add-iam-policy-binding airpollution-function \
+        gcloud functions deploy airpollution-function \
         --member allUsers \
         --role roles/cloudfunctions.invoker \
         --runtime python311 \
