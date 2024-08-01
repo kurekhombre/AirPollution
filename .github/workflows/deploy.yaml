@@ -40,4 +40,6 @@ jobs:
 
     - name: Deploy Google Cloud Workflow
       run: |
-        gcloud workflows deploy my-workflow-name --source ./gcloud_workflows/workflow.yaml --location europe-central2
+        gcloud workflows deploy worflow-1 \
+        --source ./gcloud_workflows/workflow.yaml \
+        --location europe-central2
