@@ -38,10 +38,6 @@ jobs:
         --source ./gcloud_functions \
         --set-env-vars OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}
 
-    - name: Create topic in Pub/Sub
-      run: |
-        gcloud pubsub topics create airpollution_topic_test 
-
     - name: Deploy Google Cloud Workflow
       run: |
         gcloud workflows deploy my-workflow-name --source ./gcloud_workflows/workflow.yaml --location europe-central2
