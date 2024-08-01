@@ -1,7 +1,3 @@
-permissions:
-  contents: read
-  actions: write
-
 name: Deploy to Google Cloud Functions
 
 on:
